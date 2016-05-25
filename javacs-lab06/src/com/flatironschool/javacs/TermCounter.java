@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.Iterator;
+
 
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
@@ -37,7 +39,24 @@ public class TermCounter {
 	 */
 	public int size() {
         // TODO: fill this in.
-		return -1;
+		/**
+		Iterator it = map.entrySet().iterator();
+		int count = 0;
+		while(it.hasNext()) {
+
+			Map<String, Integer> pair = (Map)it.next();
+			count = count + (Integer)pair.getValue();
+		}
+*/
+		Set<String> mapKeySet = keySet();
+		int count = 0;
+
+		for(String key : mapKeySet) {
+			count += get(key);
+		}
+		//System.out.println("count : " + count);
+
+		return count;
 	}
 
 	/**
